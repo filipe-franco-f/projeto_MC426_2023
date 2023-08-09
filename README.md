@@ -6,3 +6,4 @@ Repositório de atividades para o projeto da disciplina MC426 turma A (Engenhari
 * Arimã da Silva Alves Batista - 194347
 * Gabriel Batista Moura - 216101
 * Barbara Vilma de Melo do Nascimento - 167109
+* Andre Rocco Drisostes - 194148
