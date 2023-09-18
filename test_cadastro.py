@@ -16,7 +16,6 @@ def test_cadastro_caso_3():
     retorno =login.cadastro_senha("lurdes","lurdes1#","lurdes1$")
     assert retorno == "senahs divergem"
 
-
 def test_cadastro_caso_4():
     retorno =login.cadastro_senha("lurdes","lurdes1#","lurdes1#")
     assert retorno == "login salvo com sucesso"
