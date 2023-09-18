@@ -3,10 +3,14 @@ from tkinter import ttk
 from tkinter import messagebox
 from tkinter import Menu
 from datetime import datetime
+from validador_reuniao import validar_informacoes_reuniao
+from agendamento_exceptions import (
+    CampoVazioException,
+    DataInvalidaException
+)
 
 # Lista para armazenar as reuniões agendadas
 reunioes_agendadas = []
-
 
 # Função para agendar uma reunião
 def agendar_reuniao():
@@ -14,19 +18,15 @@ def agendar_reuniao():
     hora = hora_entry.get()
     assunto = assunto_entry.get()
 
-    # Verifica se todos os campos foram preenchidos
-    if not data or not hora or not assunto:
+    try:
+        data_hora = validar_informacoes_reuniao(data=data, hora=hora, assunto=assunto)
+    except CampoVazioException:
         messagebox.showerror("Erro", "Preencha todos os campos.")
         return
-
-    # Formata a data e hora
-    data_hora = f"{data} {hora}"
-
-    # Converte a data e hora para um objeto datetime
-    try:
-        data_hora = datetime.strptime(data_hora, "%d/%m/%Y %H:%M")
-    except ValueError:
+    except DataInvalidaException:
         messagebox.showerror("Erro", "Formato de data/hora inválido.")
+        return
+    except:
         return
 
     # Adiciona a reunião agendada à lista
