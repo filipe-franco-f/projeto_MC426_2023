@@ -10,7 +10,7 @@ def test_base_should_validate():
 def test_campo_vazio_should_raise_exception():
     data = "12/01/2025"
     hora = "12:33"
-    assunto = "a"
+    assunto = ""
     with pytest.raises(Exception):
         validar_informacoes_reuniao(data=data, hora=hora, assunto=assunto)
 
