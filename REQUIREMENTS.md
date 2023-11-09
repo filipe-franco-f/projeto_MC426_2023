@@ -3,4 +3,4 @@ um destinado a um membro específico de cada república, solicitando que descrev
 O segundo formulário foi enviado a todos os moradores das repúblicas e abordava questões relacionadas ao grau de satisfação em relação a 
 diversos aspectos, incluindo eficiência, recompensas, punições, respeito a prazos, facilidade de compreensão e utilização, justiça percebida,
 sugestões de melhorias e pontos fortes do sistema atualmente em uso. Também investigamos se os moradores estariam dispostos a considerar a 
-substituição desse sistema por um sistema automatizado.
+substituição desse sistema por um sistema automatizado. Os dados obtidos se encontram na pasta [Dados_da_pesquisa](https://github.com/filipe-franco-f/projeto_MC426_2023/tree/main/Dados_da_pesquisa) no github.
