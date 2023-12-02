@@ -17,27 +17,27 @@ Repositório de atividades para o projeto da disciplina MC426 turma A (Engenhari
 
 * Tarefas
 
-  Componente pelo qual ol o usuário pode cadastrar para um usuário e marcar como concluído as tarefas
+  Componente pelo qual o usuário pode cadastrar para um usuário e marcar as tarefas como concluídas.
 
 * Agendamento de Reunião
 
-  Componente onde o usuário Requerer uma reunião aos outros usuários
+  Componente onde o usuário pode requisitar uma reunião aos outros usuários.
 
 * Notificação
 
-  Local onde fica armazenado as atualizações de tarefas e agendamentos que  requerem a atenção do usuário   
+  Local onde ficam armazenadas as atualizações de tarefas e agendamentos que requerem a atenção do usuário. 
 
 * Menu
 
-  Navegação entre os componentes do sistema
+  Navegação entre os componentes do sistema.
 
 * Banco de dados
 
-  Onde armazena as informações dos usuários
+  Armazena as informações dos usuários.
   
 ## Estilo
 
-O principal estilo utilizado é o de Invocação Implícita, em que todos os usuários em uma mesma república servem como Publishers e Subscribers. Ao se cadastrarem em na mesa República, eles podem agendar reuniões e cadastrar ou cumprir tarefas, que serão ações notificadas aos outros usuários.
+O principal estilo utilizado é o de Invocação Implícita, em que todos os usuários em uma mesma república servem como Publishers e Subscribers. Ao se cadastrarem em na mesma República, eles podem agendar reuniões e cadastrar ou cumprir tarefas, que serão ações notificadas aos outros usuários.
 
 ## Padrão de Projeto
 
