@@ -7,7 +7,9 @@ Repositório de atividades para o projeto da disciplina MC426 turma A (Engenhari
 * Gabriel Batista Moura - 216101
 * Andre Rocco Drisostes - 194148
 
-  
+## Diagrama de Componentes - Modelo C4
+![alt text](https://github.com/filipe-franco-f/projeto_MC426_2023/blob/Padr%C3%A3o-de-projeto-adotado/C4-nivel3.png)
+
 ## Componentes do Sistema
 * Login
 
@@ -32,7 +34,11 @@ Repositório de atividades para o projeto da disciplina MC426 turma A (Engenhari
 * Banco de dados
 
   Onde armazena as informações dos usuários
+  
+## Estilo
 
+O principal estilo utilizado é o de Invocação Implícita, em que todos os usuários em uma mesma república servem como Publishers e Subscribers. Ao se cadastrarem em na mesa República, eles podem agendar reuniões e cadastrar ou cumprir tarefas, que serão ações notificadas aos outros usuários.
 
+## Padrão de Projeto
 
-Verificando acesso.
+O padrão mais adequado adotado pela equipe foi o [Mediador](https://refactoring.guru/design-patterns/mediator), tendo em vista centralizar as informações e dependências entre componentes numa única página (Menu Inicial).
