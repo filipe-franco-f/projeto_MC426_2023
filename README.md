@@ -10,21 +10,27 @@ Repositório de atividades para o projeto da disciplina MC426 turma A (Engenhari
   
 ## Componentes do Sistema
 * Login
+
   Autenticação de usuário a partir de suas credenciais para acessar o sistema.
 
 * Tarefas
+
   Componente pelo qual ol o usuário pode cadastrar para um usuário e marcar como concluído as tarefas
 
 * Agendamento de Reunião
+
   Componente onde o usuário Requerer uma reunião aos outros usuários
 
 * Notificação
+
   Local onde fica armazenado as atualizações de tarefas e agendamentos que  requerem a atenção do usuário   
 
 * Menu
+
   Navegação entre os componentes do sistema
 
 * Banco de dados
+
   Onde armazena as informações dos usuários
 
 
