@@ -1,38 +1,54 @@
 import login
-import agendamento_reunioes.agendamento as agen
 import notifica
 import tarefas
-
-
+import Bancologin
 id_user = 0
 name_user = "user"
 def sobre():
-    print("\nEste é um aplicativo feito por Alunos da unicamp para o curso de engengharia de software\n")
+    print("\nEste é um aplicativo feito por Alunos da unicamp para o curso de engenghari de software\n")
     return
 while id_user == 0:
-    print("Por favor digite o Comando entre: \n Login: \n Sobre:")
+    print("Por favor digite o Comando entre: \n Login \n Sobre")
     comando = input()
     if comando=="Login" or comando=="login":
         resposta = login.login()
-        id_user = resposta[0]
-    #elif comando == "cadastro" or comando == "cadadstro":
-    #    login.cadastro_senha()
+        try:
+            print(resposta)
+            confere = Bancologin.consulta(resposta)
+            if confere == "404":
+                id_user = 0
+            else:
+                id_user = resposta
+                name_user = confere[1]
+                print(confere)######################################
+        except:
+            id_user = 0
     elif comando=="Sobre" or comando=="sobre":
         sobre()
     else:
         print("Comando Invalido")
+
+
 while True:
-    print("\n Bem vindo ", name_user,"\n Digite uma das opçẽos: \n Notificação\n Agenda\n Tarefas\n Logoff\n")
+    print("\nBem vindo ", name_user,"\n Digite uma das opçẽos: \n Notificação\n Agenda\n Tarefas\n Comunidade\n Logoff\n")
     comando = input()
-    if comando == "agenda" or comando == "agenda":
-        agen.agendar_com_interface(id_user)
-    elif comando == "nofificacao" or comando == "notificação" or comando = "Notificação"
+    if comando == "nofificacao" or comando == "notificação" or comando == "Notificação":
         notifica.notifica(id_user)
+    #elif comando == "agenda" or comando == "agenda":
+        #chamar agenda felipe#########################
     elif comando == "Tarefas" or comando == "tarefas":
         tarefas.tarefas(id_user)
+    elif comando == "Comunidade" or comando == "comunidade":
+        print("lista de amigos")
+        a= Bancologin.lista_amigos(id_user)
+        print(a)
+        resp = input("Deseja add usuario a comunidade?(sim)\n")
+        if resp == "sim":
+            amigo = input("Digite o login do novo user\n")
+            Bancologin.add_amigo(id_user,amigo)
     elif comando == "logoff" or comando == "Logoff":
         id_user = 0
         break
     else:
-        print("\n Comando Invalido" )
+        print("\n Comando Invalido")
 print("Logout efetuado com sucesso")
