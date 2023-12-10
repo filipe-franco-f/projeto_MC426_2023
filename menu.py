@@ -1,11 +1,13 @@
 import login
+import agendamento_reunioes.agendamento as agen
 import notifica
 import tarefas
+
 
 id_user = 0
 name_user = "user"
 def sobre():
-    print("\nEste é um aplicativo feito por Alunos da unicamp para o curso de engenghari de software\n")
+    print("\nEste é um aplicativo feito por Alunos da unicamp para o curso de engengharia de software\n")
     return
 while id_user == 0:
     print("Por favor digite o Comando entre: \n Login: \n Sobre:")
@@ -23,7 +25,7 @@ while True:
     print("\n Bem vindo ", name_user,"\n Digite uma das opçẽos: \n Notificação\n Agenda\n Tarefas\n Logoff\n")
     comando = input()
     if comando == "agenda" or comando == "agenda":
-        #chamar agenda felipe#########################
+        agen.agendar_com_interface(id_user)
     elif comando == "nofificacao" or comando == "notificação" or comando = "Notificação"
         notifica.notifica(id_user)
     elif comando == "Tarefas" or comando == "tarefas":
