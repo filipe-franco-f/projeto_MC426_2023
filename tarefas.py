@@ -1,5 +1,6 @@
 import notifica
 import Bancologin
+import comunidade
 
 def tarefas(id_user):
     cod = True
@@ -19,23 +20,22 @@ def tarefas(id_user):
             cod2 = True
             while cod2:
                 print()
-                comando2 = input("\nfavor didite a tarefa")
+                comando2 = input("\nfavor didite a tarefa\n")
 
                 resposta = Bancologin.consulta(id_user)
-                lista = resposta[5]
-                for i in range(lista):
-                    print(i,lista[i])######################################
-                comando4 = input("\n digite o numero do seu amigo",int)
-                Bancologin.consultalogin(nome)
-                nome = lista[comando4]
-                responsta2 = Bancologin.consultalogin(nome)
-
-                print ("\nA tarefa é para seu amigo e é ", comando2 , "digite sim para continual\n")
-                comando3 = input()
-                if comando3 == "sim":
-                    notifica.insert_notifica(responsta2, comando2)
-                    Bancologin.alt_dado(7,responsta2,comando2,"add")
-                    return
+                lista = comunidade.lista_amigos(id_user)
+                print(lista)
+                comando4 = input("\n digite o nome do seu amigo\n")
+                id_amigo =Bancologin.consultalogin(comando4)
+                if id_amigo == "404":
+                    print("erro de digitação")
+                else:
+                    print ("\nA tarefa é para seu amigo e é ", comando2 , "digite sim para continual\n")
+                    comando3 = input()
+                    if comando3 == "sim":
+                        #notifica.insert_notifica(responsta2, comando2)
+                        Bancologin.alt_dado(7,id_amigo[0],comando2,"add")
+                return
         elif comando == "3":
             resposta = Bancologin.consulta(id_user)
             text=resposta[7]
@@ -45,7 +45,7 @@ def tarefas(id_user):
             resposta = Bancologin.consulta(id_user)
             text=resposta[7]
             text = text.replace(" ??? ", "\n")
-            cod = input("digite exatametne o nome da tarefa")
+            cod = input("digite exatametne o nome da tarefa\n")
             resp = confere(text,cod)
             if resp == True:
                 print("\ncomando confirmado\n")
