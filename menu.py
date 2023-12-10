@@ -2,6 +2,7 @@ import login
 import notifica
 import tarefas
 import Bancologin
+import comunidade
 id_user = 0
 name_user = "user"
 def sobre():
@@ -39,13 +40,7 @@ while True:
     elif comando == "Tarefas" or comando == "tarefas":
         tarefas.tarefas(id_user)
     elif comando == "Comunidade" or comando == "comunidade":
-        print("lista de amigos")
-        a= Bancologin.lista_amigos(id_user)
-        print(a)
-        resp = input("Deseja add usuario a comunidade?(sim)\n")
-        if resp == "sim":
-            amigo = input("Digite o login do novo user\n")
-            Bancologin.add_amigo(id_user,amigo)
+        comunidade.inicio(id_user)
     elif comando == "logoff" or comando == "Logoff":
         id_user = 0
         break
