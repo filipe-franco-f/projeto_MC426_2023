@@ -12,7 +12,10 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios (
                     login TEXT NOT NULL UNIQUE,
                     senha TEXT NOT NULL,
                     acumulador INTEGER DEFAULT 0,
-                    bloqueado INTEGER DEFAULT 0
+                    bloqueado INTEGER DEFAULT 0,
+                    amigos INTEGER DEFAULT '[]',
+                    notificacoes TEXT DEFAULT '[]',
+                    tarefas TEXT '[]'
                 )''')
 
 # Insere um usuário de dadologin no banco de dados
@@ -45,6 +48,18 @@ def consultalogin(text):
         return resultado
     else:
         return "404"
+
+def consulta(num):#########################
+    conn = sqlite3.connect('dadologin.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM usuarios WHERE id=?", (num,))
+    resultado = cursor.fetchone()
+    conn.close()
+    if resultado:
+        return resultado
+    else:
+        return "404"
+
     
 def deletarusuario(logim):
     try:
