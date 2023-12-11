@@ -13,8 +13,8 @@ def tarefas(id_user):
                 print ("\nA tarefa é para vc e é ", comando2 , "digite sim para continual\n")
                 comando3 = input()
                 if comando3 == "sim":
-                    #notifica.insert_notifica(id_user, comando2)#################
                     Bancologin.alt_dado(7,id_user,comando2,"add")
+                    Bancologin.alt_dado(6,id_user,comando2,"add")
                     return
         elif comando == "2":
             cod2 = True
@@ -33,8 +33,8 @@ def tarefas(id_user):
                     print ("\nA tarefa é para seu amigo e é ", comando2 , "digite sim para continual\n")
                     comando3 = input()
                     if comando3 == "sim":
-                        #notifica.insert_notifica(responsta2, comando2)
                         Bancologin.alt_dado(7,id_amigo[0],comando2,"add")
+                        Bancologin.alt_dado(6,id_amigo[0],comando2,"add")
                 return
         elif comando == "3":
             resposta = Bancologin.consulta(id_user)
