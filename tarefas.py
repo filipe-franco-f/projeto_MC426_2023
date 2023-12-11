@@ -7,7 +7,7 @@ def tarefas(id_user):
     while cod:
         comando = input("\ndigite o numero da opção \n 1 tarefa para voce\n 2 tarefa para seu amigo\n 3 para Historico de tarefas\n 4 Tarefa executada\n 5 para excluir\n 6 para volta\n")
         if comando == "1":
-            nova_tarefas(id_user)
+            nova_tarefa(id_user)
         elif comando == "2":
             tarefa_amigo(id_user)
         elif comando == "3":
@@ -26,8 +26,9 @@ def tarefas(id_user):
 def nova_tarefa(id_user):
     cod2 = True
     while cod2:
-        comando2 = input("\nfavor didite a tarefa\n")
-        comando3 = input("\nA tarefa é para vc e é ", comando2 , "digite sim para continual\n")
+        comando2 = input("\nfavor digite a tarefa\n")
+        print("\nA tarefa é para vc e é ", comando2 , "digite sim para continual\n")
+        comando3 = input()
         if comando3 == "sim":
             Bancologin.alt_dado(7,id_user,comando2,"add")
             Bancologin.alt_dado(6,id_user,comando2,"add")
@@ -72,11 +73,13 @@ def tarefa_executada(id_user):
     Bancologin.alt_dado(7,id_user,cod,"alt")
     print(text) 
     return
+
 def excluir_tarefa(id_user):
     resposta = Bancologin.consulta(id_user)
     text=resposta[7]
     text = text.replace(" ??? ", "\n")
-    cod = input("digite o numero da tarefa")
+    print(text)
+    cod = input("digite o nuome da tarefa")
     resp = confere(text,cod)
     if resp == True:
         print("\ncomando confirmado\n")
