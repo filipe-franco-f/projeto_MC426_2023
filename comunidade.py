@@ -31,8 +31,8 @@ def add_amigo(id_user,amigo):
         if t == True:
             print("ja é amigo")
         else:
-            atualizaramg(id_user,resposta[0])
             Bancologin.alt_dado(5,id_user,amigo,"add")
+            atualizaramg(id_user,resposta[0])
             Bancologin.alt_dado(6,id_user,("novo amigo user "+amigo),"add")#############################
             return "amigo encontrado"
     
