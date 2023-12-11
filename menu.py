@@ -13,6 +13,7 @@ while id_user == 0:
     comando = input()
     if comando=="Login" or comando=="login":
         resposta = login.login()
+        print(resposta)
         try:
             confere = Bancologin.consulta(resposta)
             if confere == "404":
