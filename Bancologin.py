@@ -31,7 +31,6 @@ def inserir_login(login, senha):
         conn = sqlite3.connect('dadologin.db')
         cursor = conn.cursor()
         cursor.execute("INSERT INTO usuarios (login, senha) VALUES (?, ?)", (login, senha))
-        cursor.exec
         conn.commit()
         conn.close()
         text = "login salvo com sucesso"
