@@ -13,9 +13,9 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS usuarios (
                     senha TEXT NOT NULL,
                     acumulador INTEGER DEFAULT 0,
                     bloqueado INTEGER DEFAULT 0,
-                    amigos INTEGER DEFAULT '[]',
-                    notificacoes TEXT DEFAULT '[]',
-                    tarefas TEXT '[]'
+                    amigos INTEGER DEFAULT '',
+                    notificacoes TEXT DEFAULT '',
+                    tarefas TEXT DEFAULT ''
                 )''')
 
 # Insere um usuário de dadologin no banco de dados
@@ -38,6 +38,7 @@ def inserir_login(login, senha):
     except:
         text = "erro de login"
         return text
+    
 def consultalogin(text):
     conn = sqlite3.connect('dadologin.db')
     cursor = conn.cursor()
@@ -48,6 +49,41 @@ def consultalogin(text):
         return resultado
     else:
         return "404"
+    
+
+
+            #num é o endero do banco, dado a informação
+def alt_dado(num, id_user, dado, comando):
+    conn = sqlite3.connect('dadologin.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM usuarios WHERE id=?", (id_user,))
+    resultado = cursor.fetchone()
+
+    lista =resultado[num]
+
+    if comando == "add":
+        lista = lista +" ??? "+ dado
+    elif comando == "delete":
+        dado = " ??? "+dado
+        lista = lista.replace(dado,"")
+    elif comando == "deleteall":
+        lista = ""
+    elif comando == "alt":
+        lista = lista.replace(dado,("feito " +dado))
+    if num == 5:
+        cursor.execute("UPDATE usuarios SET amigos=? WHERE id=?", (lista, id_user))
+    elif num == 6:
+        cursor.execute("UPDATE usuarios SET notificacoes=? WHERE id=?", (lista, id_user))
+    if num == 7:
+        cursor.execute("UPDATE usuarios SET tarefas=? WHERE id=?", (lista, id_user))
+    
+    
+    conn.commit()
+    conn.close()
+    return
+
+
 
 def consulta(num):#########################
     conn = sqlite3.connect('dadologin.db')
@@ -83,3 +119,4 @@ def alt_acumulador(logim,num):
         cursor.execute("UPDATE usuarios SET bloqueado=? WHERE login=?", (1, logim))
     conn.commit()
     conn.close()
+
