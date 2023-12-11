@@ -3,3 +3,9 @@ class CampoVazioException(Exception):
 
 class DataInvalidaException(Exception):
     pass
+
+class PessoaNaoEncontrada(LookupError):
+    pass
+
+class reuniaoNaoEncontrada(LookupError):
+    pass

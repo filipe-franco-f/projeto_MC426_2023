@@ -1,5 +1,5 @@
 from datetime import datetime
-from agendamento_exceptions import (
+from agendamento_reunioes.agendamento_exceptions import (
     CampoVazioException,
     DataInvalidaException
 )
