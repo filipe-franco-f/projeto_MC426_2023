@@ -1,8 +1,9 @@
 import login
 import Bancologin
 def test_cadastro():
+    Bancologin.inserir_login("antonio","lurdes")
     retorno =login.cadastro_senha("antonio","lurdes","lurdes")
-    assert retorno == "/n login em uso, favor tentar novamente/n"
+    assert retorno == "\n login em uso, favor tentar novamente\n"
 
 def test_cadastro_caso_1():
     retorno =login.cadastro_senha("lurdes","lurdes","lurdes")

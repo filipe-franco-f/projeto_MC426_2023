@@ -10,7 +10,7 @@ def verifica_caracteres(texto, caracteres):
 
 def ent_login(logim, senha):
     retorno = Bancologin.consultalogin(logim)
-    print(retorno)
+    #print(retorno)
     if retorno == "404":
         return "senha ou login invalidos"
     elif retorno[4] == 1:
@@ -40,7 +40,7 @@ def cadastro_senha(logim, senha, senha2):
             resposta = Bancologin.inserir_login(logim,senha)
             return resposta
     else:
-        return "/n login em uso, favor tentar novamente/n"
+        return "\n login em uso, favor tentar novamente\n"
             
 
 def login():
@@ -55,9 +55,10 @@ def login():
 
     elif comando == "2":
         logim = input("digite login desejado: ")
-        senha = getpass.getpass("repita a senha") 
-        senha2 = getpass.getpass("digite a senha desejada: /n (precisa conter pelo menos um numero e um caracter em especial)")
+        senha = getpass.getpass("digite a senha desejada: /n (precisa conter pelo menos um numero e um caracter em especial)") 
+        senha2 = getpass.getpass("repita a senha")
         resposta = cadastro_senha(logim,senha,senha2)
         return resposta
     else:
-        return "comando nao aceito"
+        print("comando nao aceito")
+        return 0
