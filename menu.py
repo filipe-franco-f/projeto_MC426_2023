@@ -14,14 +14,12 @@ while id_user == 0:
     if comando=="Login" or comando=="login":
         resposta = login.login()
         try:
-            print(resposta)
             confere = Bancologin.consulta(resposta)
             if confere == "404":
                 id_user = 0
             else:
                 id_user = resposta
                 name_user = confere[1]
-                print(confere)######################################
         except:
             id_user = 0
     elif comando=="Sobre" or comando=="sobre":
