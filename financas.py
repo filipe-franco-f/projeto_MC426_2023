@@ -4,8 +4,7 @@ from tkinter import messagebox
 from tkinter import Menu
 from datetime import datetime
 import banco_financas
-
-dividas = []
+from banco_financas import DbParams
 
 class CampoVazioException(Exception):
     pass
@@ -44,10 +43,11 @@ def cadastrar_divida(id_user, pessoa_entry, valor_entry, assunto_entry):
         return
     except:
         return
-
+    db_params_user1 = DbParams(id_user, None, valor, assunto)
+    db_params_user2 = DbParams(None, pessoa, None, None)
     # Adiciona a reunião agendada à lista
     try:
-        cadastro = banco_financas.cadastra_divida(id_user, pessoa, valor, assunto)
+        fill = banco_financas.cadastra_divida(db_params_user1, db_params_user2)
     except:
         messagebox.showerror("Erro", "Pessoa não encontrada")
         return
@@ -74,10 +74,12 @@ def quita_divida(id_user, pessoa_entry, valor_entry, assunto_entry):
         return
     except:
         return
-
+    
+    db_params_user1 = DbParams(id_user, None, valor, assunto)
+    db_params_user2 = DbParams(None, pessoa, None, None)
     # Adiciona a reunião agendada à lista
     try:
-        cadastro = banco_financas.quitar_divida(id_user, pessoa, valor, assunto)
+        fill = banco_financas.quitar_divida(db_params_user1, db_params_user2)
     except banco_financas.PessoaNaoEncontrada:
         messagebox.showerror("Erro", "Pessoa não encontrada")
         return
@@ -105,10 +107,6 @@ def exibir_dividas(id_user):
             Assunto: {assunto}\n
             ===============""" for pessoa, valor, assunto in dividas])
         messagebox.showinfo("Dívidas", lista_dividas)
-    
-def quitar_dividas(id_user):
-    root = tk.Tk()
-    root.title("Administrador de finanças")
 
 def administrar_financas(id_user):
     # Configuração da janela principal
@@ -173,5 +171,3 @@ def administrar_financas(id_user):
     # Iniciar a interface gráfica
     notebook.pack()
     root.mainloop()
-
-administrar_financas(1)
