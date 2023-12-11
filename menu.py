@@ -4,7 +4,7 @@ import tarefas
 import Bancologin
 import comunidade
 import financas
-import agendamento_reunioes/agendamento
+#import agendamento_reunioes.agendamento
 id_user = 0
 name_user = "user"
 def sobre():
@@ -36,10 +36,10 @@ while True:
     comando = input()
     if comando == "nofificacao" or comando == "notificação" or comando == "Notificação":
         notifica.notifica(id_user)
-    #elif comando == "agenda" or comando == "agenda":
-        #chamar agenda felipe#########################
-    #elif comando == "Finanças" or comando == "finanças":
-        #chamar agenda felipe##############################################
+    #elif comando == "agenda" or comando == "Agenda":
+        #agendamento_reunioes.agendamento.agendar_com_interface(id_user)
+    elif comando == "Finanças" or comando == "finanças":
+        financas.administrar_financas(id_user)
     elif comando == "Tarefas" or comando == "tarefas":
         tarefas.tarefas(id_user)
     elif comando == "Comunidade" or comando == "comunidade":

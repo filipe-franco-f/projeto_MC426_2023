@@ -1,7 +1,6 @@
 import sqlite3
 import json
-import traceback
-import sys
+import Bancologin
 
 class PessoaNaoEncontrada(LookupError):
     pass
@@ -120,6 +119,10 @@ def cadastra_divida(id:int, username_outra_pessoa:str, valor:str, assunto:str):
         raise PessoaNaoEncontrada
     cadastra_divida_uma_pessoa(username1, username_outra_pessoa, valor, assunto)
     cadastra_divida_uma_pessoa(username_outra_pessoa, username1, valor_op, assunto)
+    notificacao1 = f"Voce cadastrou dívida para {username_outra_pessoa} de {valor} sobre {assunto}."
+    notificacao2 = f"{username1} cadastrou divida para você no valor de {valor_op} sobre {assunto}."
+    Bancologin.alt_dado(6, id, notificacao1,"add")
+    Bancologin.alt_dado(6, id2, notificacao2,"add")
 
 def checar_dividas(id:int):
     conn = sqlite3.connect('dadologin.db')
@@ -161,4 +164,8 @@ def quitar_divida(id:int, username_outra_pessoa:str, valor:str, assunto:str):
         quita_divida_uma_pessoa(username_outra_pessoa, username1, valor_op, assunto)
     except:
         raise DividaNaoEncontrada
+    notificacao1 = f"Voce quitou dívida para {username_outra_pessoa} de {valor} sobre {assunto}."
+    notificacao2 = f"{username1} quitou divida para você no valor de {valor_op} sobre {assunto}."
+    Bancologin.alt_dado(6, id, notificacao1,"add")
+    Bancologin.alt_dado(6, id2, notificacao2,"add")
     

@@ -1,5 +1,6 @@
 import getpass
-import Bancologin  
+import Bancologin
+import banco_financas
 def verifica_caracteres(texto, caracteres):
     caracteres_presentes = [caractere for caractere in caracteres if caractere in texto]
     
@@ -38,6 +39,8 @@ def cadastro_senha(logim, senha, senha2):
             return "senahs divergem"
         else:
             resposta = Bancologin.inserir_login(logim,senha)
+            id = Bancologin.consultalogin(logim)
+            banco_financas.inserir_no_banco(id[0] ,logim)
             return resposta
     else:
         return "\n login em uso, favor tentar novamente\n"
