@@ -67,6 +67,10 @@ def alt_dado(num, id_user, dado, comando):
     elif comando == "delete":
         dado = " ??? "+dado
         lista = lista.replace(dado,"")
+        
+    elif comando == "deleteall":
+        lista = ""
+
     elif comando == "alt":
         lista = lista.replace(dado,("feito " +dado))
     if num == 5:
