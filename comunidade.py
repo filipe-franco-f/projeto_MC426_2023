@@ -10,6 +10,14 @@ def inicio(id_user):
     if resp == "sim":
         amigo = input("Digite o login do novo user\n")
         add_amigo(id_user,amigo)
+    resp = input("deseja atualizar amigos?(sim)")
+    n = len(a)
+    if resp == "sim":
+        for i in range(n):
+            p = str(a[i])
+            vetor = Bancologin.consultalogin(p)
+            atualizaramg(id_user,vetor[0])
+    
 
 def add_amigo(id_user,amigo):
     
@@ -25,6 +33,7 @@ def add_amigo(id_user,amigo):
         else:
             atualizaramg(id_user,resposta[0])
             Bancologin.alt_dado(5,id_user,amigo,"add")
+            Bancologin.alt_dado(6,id_user,("novo amigo user "+amigo),"add")#############################
             return "amigo encontrado"
     
 def lista_amigos(id_user):
@@ -35,9 +44,6 @@ def lista_amigos(id_user):
     return dado
 
 def atualizaramg(id_user,amigo_id):
-    #e1 = Bancologin.consulta(id_user)
-    #e2 = Bancologin.consulta(amigo_id)
-    #print(e1[5])
     dado1 = lista_amigos(id_user)
     dado2 = lista_amigos(amigo_id)
     d1 = list(set(dado1).difference(dado2))
