@@ -3,6 +3,8 @@ import notifica
 import tarefas
 import Bancologin
 import comunidade
+import financas
+import agendamento_reunioes/agendamento
 id_user = 0
 name_user = "user"
 def sobre():
@@ -30,12 +32,14 @@ while id_user == 0:
 
 
 while True:
-    print("\nBem vindo ", name_user,"\n Digite uma das opçẽos: \n Notificação\n Agenda\n Tarefas\n Comunidade\n Logoff\n")
+    print("\nBem vindo ", name_user,"\n Digite uma das opçẽos: \n Notificação\n Agenda\n Tarefas\n Comunidade\n Finanças\n Logoff\n")
     comando = input()
     if comando == "nofificacao" or comando == "notificação" or comando == "Notificação":
         notifica.notifica(id_user)
     #elif comando == "agenda" or comando == "agenda":
         #chamar agenda felipe#########################
+    #elif comando == "Finanças" or comando == "finanças":
+        #chamar agenda felipe##############################################
     elif comando == "Tarefas" or comando == "tarefas":
         tarefas.tarefas(id_user)
     elif comando == "Comunidade" or comando == "comunidade":
