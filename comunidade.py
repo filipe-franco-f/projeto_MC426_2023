@@ -9,7 +9,8 @@ def inicio(id_user):
     resp = input("Deseja add usuario a comunidade?(sim)\n")
     if resp == "sim":
         amigo = input("Digite o login do novo user\n")
-        add_amigo(id_user,amigo)
+        add_amigo(id_user,amigo
+
     resp = input("deseja atualizar amigos?(sim)")
     n = len(a)
     if resp == "sim":
@@ -17,7 +18,7 @@ def inicio(id_user):
             p = str(a[i])
             vetor = Bancologin.consultalogin(p)
             atualizaramg(id_user,vetor[0])
-    
+
 
 def add_amigo(id_user,amigo):
     
@@ -33,7 +34,7 @@ def add_amigo(id_user,amigo):
         else:
             atualizaramg(id_user,resposta[0])
             Bancologin.alt_dado(5,id_user,amigo,"add")
-            Bancologin.alt_dado(6,id_user,("novo amigo user "+amigo),"add")#############################
+            Bancologin.alt_dado(6,id_user,("novo amigo user "+amigo),"add")
             return "amigo encontrado"
     
 def lista_amigos(id_user):

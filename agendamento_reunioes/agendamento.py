@@ -49,41 +49,41 @@ def exibir_reunioes():
             [f"{data.strftime('%d/%m/%Y %H:%M')} - {assunto}" for data, assunto in reunioes_agendadas])
         messagebox.showinfo("Reuniões Agendadas", lista_reunioes)
 
+def agendar_com_interface(id_user):
+    # Configuração da janela principal
+    root = tk.Tk()
+    root.title("Agendamento de Reuniões")
 
-# Configuração da janela principal
-root = tk.Tk()
-root.title("Agendamento de Reuniões")
+    # Rótulos e entradas
+    calendario_label = tk.Label(root, text="Data (dd/mm/yyyy):")
+    calendario_label.pack()
+    calendario = ttk.Entry(root)
+    calendario.pack()
 
-# Rótulos e entradas
-calendario_label = tk.Label(root, text="Data (dd/mm/yyyy):")
-calendario_label.pack()
-calendario = ttk.Entry(root)
-calendario.pack()
+    hora_label = tk.Label(root, text="Hora (hh:mm):")
+    hora_label.pack()
+    hora_entry = ttk.Entry(root)
+    hora_entry.pack()
 
-hora_label = tk.Label(root, text="Hora (hh:mm):")
-hora_label.pack()
-hora_entry = ttk.Entry(root)
-hora_entry.pack()
+    assunto_label = tk.Label(root, text="Assunto:")
+    assunto_label.pack()
+    assunto_entry = ttk.Entry(root)
+    assunto_entry.pack()
 
-assunto_label = tk.Label(root, text="Assunto:")
-assunto_label.pack()
-assunto_entry = ttk.Entry(root)
-assunto_entry.pack()
+    # Botão para agendar reunião
+    agendar_button = ttk.Button(root, text="Agendar Reunião", command=agendar_reuniao)
+    agendar_button.pack()
 
-# Botão para agendar reunião
-agendar_button = ttk.Button(root, text="Agendar Reunião", command=agendar_reuniao)
-agendar_button.pack()
+    # Cria um menu
+    menu_bar = Menu(root)
+    root.config(menu=menu_bar)
 
-# Cria um menu
-menu_bar = Menu(root)
-root.config(menu=menu_bar)
+    # Adiciona um menu chamado "Reuniões"
+    reunioes_menu = Menu(menu_bar, tearoff=0)
+    menu_bar.add_cascade(label="Reuniões", menu=reunioes_menu)
 
-# Adiciona um menu chamado "Reuniões"
-reunioes_menu = Menu(menu_bar, tearoff=0)
-menu_bar.add_cascade(label="Reuniões", menu=reunioes_menu)
+    # Adiciona uma opção no menu para exibir as reuniões agendadas
+    reunioes_menu.add_command(label="Exibir Reuniões Agendadas", command=exibir_reunioes)
 
-# Adiciona uma opção no menu para exibir as reuniões agendadas
-reunioes_menu.add_command(label="Exibir Reuniões Agendadas", command=exibir_reunioes)
-
-# Iniciar a interface gráfica
-root.mainloop()
+    # Iniciar a interface gráfica
+    root.mainloop()
