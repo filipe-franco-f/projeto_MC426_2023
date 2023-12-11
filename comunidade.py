@@ -29,7 +29,7 @@ def add_amigo(id_user,amigo):
         v = verifica[5]
         t = confere(v,amigo)
         if t == True:
-            print("ja é amigo")
+            return "ja é amigo"
         else:
             Bancologin.alt_dado(5,id_user,amigo,"add")
             atualizaramg(id_user,resposta[0])
