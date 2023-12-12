@@ -1,6 +1,8 @@
 import sqlite3
 import json
 from agendamento_reunioes.agendamento_exceptions import CampoVazioException, DataInvalidaException, PessoaNaoEncontrada, reuniaoNaoEncontrada
+import comunidade
+import Bancologin
 
 # Conecta-se ao banco de dados (ou cria um novo se não existir)
 conn = sqlite3.connect('dadologin.db')
@@ -84,10 +86,19 @@ def cadastra_reuniao_uma_pessoa(username1:str, data_hora:str, assunto:str):
     
 def cadastra_reuniao(id_user:int, data_hora:str, assunto:str):
     username1 = get_username(id_user)
-    if username1 == None:
-        raise PessoaNaoEncontrada
     cadastra_reuniao_uma_pessoa(username1, data_hora, assunto)
-
+    notificacao1 = f"Voce cadastrou uma reunião para sua comunidade sobre {assunto}, em: {data_hora}."
+    Bancologin.alt_dado(6, id_user, notificacao1,"add")
+    
+    lista_de_comunidade = comunidade.lista_amigos(id_user)
+    for pessoa in lista_de_comunidade:
+        if pessoa != username1:
+            cadastra_reuniao_uma_pessoa(pessoa, data_hora, assunto)
+            id_pessoa = get_id(pessoa)
+            notificacao2 = f"{username1} cadastrou uma reunião para sua comunidade sobre {assunto}, em: {data_hora}."
+            Bancologin.alt_dado(6, id_pessoa, notificacao2,"add")
+    
+    
 def checar_reunioes(id:int):
     conn = sqlite3.connect('dadologin.db')
     cursor = conn.cursor()
@@ -123,6 +134,15 @@ def deletar_reuniao(id_user:int, data_hora:str, assunto:str):
         raise PessoaNaoEncontrada
     try:
         deleta_reuniao_uma_pessoa(username1, data_hora, assunto)
+        notificacao1 = f"Voce desmarcou uma reunião para sua comunidade sobre {assunto}, em: {data_hora}."
+        Bancologin.alt_dado(6, id_user, notificacao1,"add")
     except:
         raise reuniaoNaoEncontrada
+    lista_de_comunidade = comunidade.lista_amigos(id_user)
+    for pessoa in lista_de_comunidade:
+        if pessoa != username1:
+            deleta_reuniao_uma_pessoa(pessoa, data_hora, assunto)
+            id_pessoa = get_id(pessoa)
+            notificacao2 = f"{username1} desmarcou uma reunião para sua comunidade sobre {assunto}, em: {data_hora}."
+            Bancologin.alt_dado(6, id_pessoa, notificacao2,"add")
     

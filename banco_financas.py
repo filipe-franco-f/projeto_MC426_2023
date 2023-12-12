@@ -47,28 +47,6 @@ def inserir_no_banco(id, username):
         text = "erro de username"
         return text
 
-def consulta(num):
-    conn = sqlite3.connect('dadologin.db')
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM financas WHERE id=?", (num,))
-    resultado = cursor.fetchone()
-    conn.close()
-    if resultado:
-        return resultado
-    else:
-        return "404"
-    
-def consulta_username(username):
-    conn = sqlite3.connect('dadologin.db')
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM financas WHERE username=?", (username,))
-    resultado = cursor.fetchone()
-    conn.close()
-    if resultado:
-        return resultado
-    else:
-        return "404"
-
 def deletarusuario(username):
     try:
         conn = sqlite3.connect('dadologin.db')
