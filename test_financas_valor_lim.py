@@ -44,6 +44,22 @@ def test_above_cent_should_raise_exception():
     assunto = "assunto"
     with pytest.raises(Exception):
         cadastrar_divida(user_id, divida_com, valor, assunto)
+
+def test_above_neg_cent_should_raise_exception():
+    user_id = 0
+    divida_com = "user1"
+    valor = "-0.009"
+    assunto = "assunto"
+    with pytest.raises(Exception):
+        cadastrar_divida(user_id, divida_com, valor, assunto)
+
+def test_less_than_neg_cent_should_raise_exception():
+    user_id = 0
+    divida_com = "user1"
+    valor = "-0.011"
+    assunto = "assunto"
+    with pytest.raises(Exception):
+        cadastrar_divida(user_id, divida_com, valor, assunto)
     
 deletarusuario("user0")
 deletarusuario("user1")
