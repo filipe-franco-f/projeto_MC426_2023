@@ -1,6 +1,7 @@
 import getpass
 import Bancologin
 import banco_financas
+import banco_agendamento
 def verifica_caracteres(texto, caracteres):
     caracteres_presentes = [caractere for caractere in caracteres if caractere in texto]
     
@@ -21,7 +22,7 @@ def ent_login(logim, senha):
         return "senha invalida"
     else:
         Bancologin.alt_acumulador(logim, 0)
-        print("logim efetuado")
+        print("login efetuado")
         return retorno[0]
 
 def cadastro_senha(logim, senha, senha2):
@@ -41,13 +42,14 @@ def cadastro_senha(logim, senha, senha2):
             resposta = Bancologin.inserir_login(logim,senha)
             id = Bancologin.consultalogin(logim)
             banco_financas.inserir_no_banco(id[0] ,logim)
+            banco_agendamento.inserir_no_banco(id[0], logim)
             return resposta
     else:
         return "\n login em uso, favor tentar novamente\n"
             
 
 def login():
-    comando = input("digite '1' para entrar com seu login ou '2' para se cadastrar")
+    comando = input("digite '1' para entrar com seu login ou '2' para se cadastrar\n")
     if comando == "1":
         texto = input("login: ")
         logim = texto
@@ -58,7 +60,7 @@ def login():
 
     elif comando == "2":
         logim = input("digite login desejado: ")
-        senha = getpass.getpass("digite a senha desejada: /n (precisa conter pelo menos um numero e um caracter em especial)") 
+        senha = getpass.getpass("digite a senha desejada: (precisa conter pelo menos um numero e um caracter em especial)") 
         senha2 = getpass.getpass("repita a senha")
         resposta = cadastro_senha(logim,senha,senha2)
         return resposta

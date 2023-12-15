@@ -4,11 +4,11 @@ import tarefas
 import Bancologin
 import comunidade
 import financas
-#import agendamento_reunioes.agendamento
+import agendamento
 id_user = 0
 name_user = "user"
 def sobre():
-    print("\nEste é um aplicativo feito por Alunos da unicamp para o curso de engenghari de software\n")
+    print("\nEste é um aplicativo feito por Alunos da unicamp para o curso de engengharia de software\n")
     return
 while id_user == 0:
     print("Por favor digite o Comando entre: \n Login \n Sobre")
@@ -36,9 +36,9 @@ while True:
     comando = input()
     if comando == "nofificacao" or comando == "notificação" or comando == "Notificação":
         notifica.notifica(id_user)
-    #elif comando == "agenda" or comando == "Agenda":
-        #agendamento_reunioes.agendamento.agendar_com_interface(id_user)
-    elif comando == "Finanças" or comando == "finanças":
+    elif comando == "agenda" or comando == "Agenda":
+        agendamento.agenda(id_user)
+    elif comando == "Finanças" or comando == "finanças" or comando == "financas":
         financas.administrar_financas(id_user)
     elif comando == "Tarefas" or comando == "tarefas":
         tarefas.tarefas(id_user)
