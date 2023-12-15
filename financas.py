@@ -15,11 +15,10 @@ def validar_informacoes_divida(pessoa: str, valor:str, assunto:str):
     if len(valor) < 4 or valor[-3] != ".":
         raise ValorInvalidoException
     try:
-        reais = int(valor[:-3])
-        centavos = int(valor[-2:])
+        f = float(valor)
     except:
         raise ValorInvalidoException
-
+    assert f <= -0.01 or f >= 0.01
     return 
 
 def cadastrar_divida(id_user, pessoa, valor, assunto):
@@ -27,12 +26,13 @@ def cadastrar_divida(id_user, pessoa, valor, assunto):
         validar_informacoes_divida(pessoa=pessoa, valor=valor, assunto=assunto)
     except CampoVazioException:
         print("Erro: Preencha todos os campos.")
-        return
+        raise CampoVazioException
     except ValorInvalidoException:
         print("Erro: Formato de valor da dívida inválido.")
-        return
+        raise ValorInvalidoException
     except:
-        return
+        raise ValorInvalidoException
+        
     db_params_user1 = DbParams(id_user, None, valor, assunto)
     db_params_user2 = DbParams(None, pessoa, None, None)
 
