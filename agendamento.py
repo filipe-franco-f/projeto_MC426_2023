@@ -14,10 +14,10 @@ def agendar_reuniao(id_user, data, hora, assunto):
         data_hora = agendamento_reunioes.validador_reuniao.validar_informacoes_reuniao(data=data, hora=hora, assunto=assunto)
     except CampoVazioException:
         print("Erro: Preencha todos os campos.")
-        return
+        raise CampoVazioException
     except DataInvalidaException:
         print("Erro: Formato de data/hora inválido.")
-        return
+        raise DataInvalidaException
     except:
         print("Ocorreu um Erro.")
         return
